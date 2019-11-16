@@ -67,7 +67,7 @@ new Vue({
                 case 3:
                     switch (change_2) {
                         case 1:
-                            return null
+                            return [0, 1, 2]
                         case 2:
                             return [1, 2, 0]
                         case 3:
