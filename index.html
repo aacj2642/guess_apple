@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+        <div class="row justify-content-center">
+            <h1>
+                <span class="badge badge-danger">重聚礦石鎮 霍安猜蘋果小幫手</span>
+            </h1>
+        </div>
+        <div class="row justify-content-center">
+            <a href="https://forum.gamer.com.tw/C.php?bsn=1405&snA=24746" target="_blank">猜蘋果相關說明</a>
+        </div>
+        <div class="row justify-content-center">
+            <span class="badge badge-info">點擊英文字母選擇一開始蘋果的順序</span>
+        </div>
+        <div class="row justify-content-center">
+            <div v-if="start_apple.S" @click='set_apple("S")'>
+                <span class="badge badge-danger mr-2">S</span>
+            </div>
+            <div v-if="start_apple.H" @click='set_apple("H")'>
+                <span class="badge badge-danger mr-2">H</span>
+            </div>
+            <div v-if="start_apple.A" @click='set_apple("A")'>
+                <span class="badge badge-danger mr-2">A</span>
+            </div>
+            &nbsp;
+        </div>
+        <div class="row justify-content-center">
+            <span style="font-size: 13px;">現在蘋果順序：</span>
+            <span v-for="(apple, index) in apple_array" class="badge badge-danger mr-2"
+                @click='cencel_apple(apple, index)'>
+                {{apple}}
+            </span>
+        </div>
+        <div class="row justify-content-center">
+            <button class="btn btn-success btn-sm mt-2" @click='reset_apple'>重設蘋果</button>
+        </div>
+        <div class="row justify-content-center mt-2">
+            選擇最後兩次交換方式：
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div style="line-height:72px;">
+                倒數第二次：
+            </div>
+            <div>
+                <div>
+                    <input type="radio" v-model="change_1" :value="1">1
+                </div>
+                <div>
+                    <input type="radio" v-model="change_1" :value="2">2
+                </div>
+                <div>
+                    <input type="radio" v-model="change_1" :value="3">3
+                </div>
+            </div>
+            <span class="ml-4" style="line-height:72px;">
+                最後一次：
+            </span>
+            <div>
+                <div>
+                    <input type="radio" v-model="change_2" :value="1">1
+                </div>
+                <div>
+                    <input type="radio" v-model="change_2" :value="2">2
+                </div>
+                <div>
+                    <input type="radio" v-model="change_2" :value="3">3
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            蘋果排列結果：
+            <span v-if="sort_apple == null">沒有此種排列方式</span>
+            <span v-for="apple_ordering in sort_apple" class="badge badge-danger mr-2 mt-2">
+                {{apple_array[apple_ordering]}}
+            </span>
+        </div>
+        <div class="row justify-content-center mt-2">
+            已遊玩次數：{{game_count}}
+            <button class="btn btn-primary btn-sm ml-2" @click='next_game'>下一局</button>
+            <button class="btn btn-success btn-sm ml-2" @click='reset'>全部重設</button>
+        </div>
+        <div class="row justify-content-center">
+
+        </div>
+        <div class="row justify-content-center">
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
