@@ -26,10 +26,15 @@ new Vue({
                 'H': true,
                 'A': true
             },
-                this.apple_array = []
+            this.apple_array = []
         },
         next_game: function () {
-            this.reset_apple()
+            var apple_array = []
+            var sort = this.sort_apple
+            apple_array[0] = this.apple_array[sort[0]]
+            apple_array[1] = this.apple_array[sort[1]]
+            apple_array[2] = this.apple_array[sort[2]]
+            this.apple_array = apple_array
             this.change_1 = null
             this.change_2 = null
             this.game_count += 1
